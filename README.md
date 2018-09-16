@@ -1,1 +1,1 @@
-https://ratebeerwadror.herokuapp.com/breweries
+https://ratebeerwadror.herokuapp.com
