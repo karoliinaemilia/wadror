@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class BreweriesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,7 +16,7 @@ class BreweriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create brewery" do
-    assert_difference('Brewery.count') do
+    assert_difference("Brewery.count") do
       post breweries_url, params: { brewery: { name: @brewery.name, year: @brewery.year } }
     end
 
@@ -39,7 +39,7 @@ class BreweriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy brewery" do
-    assert_difference('Brewery.count', -1) do
+    assert_difference("Brewery.count", -1) do
       delete brewery_url(@brewery)
     end
 

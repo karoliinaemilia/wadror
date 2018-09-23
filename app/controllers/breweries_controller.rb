@@ -29,7 +29,7 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.save
-        format.html { redirect_to @brewery, notice: 'Brewery was successfully created.' }
+        format.html { redirect_to @brewery, notice: "Brewery was successfully created." }
         format.json { render :show, status: :created, location: @brewery }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class BreweriesController < ApplicationController
   def update
     respond_to do |format|
       if @brewery.update(brewery_params)
-        format.html { redirect_to @brewery, notice: 'Brewery was successfully updated.' }
+        format.html { redirect_to @brewery, notice: "Brewery was successfully updated." }
         format.json { render :show, status: :ok, location: @brewery }
       else
         format.html { render :edit }
@@ -57,26 +57,28 @@ class BreweriesController < ApplicationController
   def destroy
     @brewery.destroy
     respond_to do |format|
-      format.html { redirect_to breweries_url, notice: 'Brewery was successfully destroyed.' }
+      format.html { redirect_to breweries_url, notice: "Brewery was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
 
-    def authenticate
-      admin_accounts = { "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas", "admin" => "secret" }
-      authenticate_or_request_with_http_basic do |username, password|
-        admin_accounts.key?(username) and admin_accounts.value?(password)
-      end
+  def authenticate
+    admin_accounts = { "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas", "admin" => "secret" }
+    authenticate_or_request_with_http_basic do |username, password|
+      admin_accounts.key?(username) && admin_accounts.value?(password)
     end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_brewery
-      @brewery = Brewery.find(params[:id])
-    end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def brewery_params
-      params.require(:brewery).permit(:name, :year)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+
+  def set_brewery
+    @brewery = Brewery.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def brewery_params
+    params.require(:brewery).permit(:name, :year)
+  end
 end
