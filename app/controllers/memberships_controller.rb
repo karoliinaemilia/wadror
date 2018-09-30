@@ -29,7 +29,6 @@ class MembershipsController < ApplicationController
     club = BeerClub.find_by id: params.require(:membership)[:beer_club_id]
     if !club.members.include?(current_user)
       @membership = Membership.new(membership_params)
-
       @membership.user = current_user
       respond_to do |format|
         if @membership.save

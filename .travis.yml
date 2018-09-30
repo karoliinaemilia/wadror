@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+- 2.5.1
+script:
+- bundle exec rails db:migrate
+- bundle exec rspec -fd spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: MjxoWQXABP+He8u/yjjp+1T0P+gb2Oga8zIgUa37JMCDkinCfkcK/2aDdXTyosz2lRg0Ey6CMcmV1RBRJQjRM1FMbVaYe7Rw9DJyTWnAXaa8BcgTeMlSw+mbbRlKl4tsOgNIFhfQlmwdDtoHUAPy2eVT3rv1w0RqoW0o4/vWgKILjI3OQmfn4LMc+DXFC9xbV8fl6x2EKuh2tHnFawRihurHtT53rrHJeeYcBex4KtvR8LAat/uJYHvzmZ4At6GlsWjg2Syh1Msm2QfV/7zNXOsHTJYjuOUh6vzqQWfN9zjKD4whh72FSesP/2q9O3Hmbha3SpPUQ+wW3FIYO9uz7sFPCft1hEUjQL67cochQemhTZ3UMmg6oanietx4+ISDrllGuNf9QUwZYR7TDGhm5HVUEgrV8+W9lSagnQ4b8wSxXb3C1DbDvHjPjTL0M4dK3DHOhFA/yzGlZXGtjDYRPz/HZUJW6UPqNqSqwegFDaLT8uo+aOYoO4k/dMmFUJ2FOwhgimycrh8Whv44iL/Sg9Qb7H7Do1ch3xHGbmQANwtnuWjOBWy58yFfr9y5SgMwIzfQqRK8bYS1ZZVYppXEhhFZMNlpkSspfGTLfN7LzZaQxdgBJWozCJEg148zwoR8D9gyn5d3ZIwTN0cJtHwJd1Ong6IZHpVWJOOLB1ZSBA0=
+  app: ratebeerwadror
+  on:
+    repo: karoliinaemilia/wadror
+  run: "rails db:migrate"

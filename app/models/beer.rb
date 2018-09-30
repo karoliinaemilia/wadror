@@ -3,6 +3,7 @@ class Beer < ApplicationRecord
   belongs_to :brewery
 
   validates :name, presence: true
+  validates :style, presence: true
 
   has_many :ratings, dependent: :destroy
   has_many :raters, -> { distinct }, through: :ratings, source: :user

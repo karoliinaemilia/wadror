@@ -17,7 +17,7 @@
 <p>This club doesn't have any members yet</p>
 <%end%>
 
-<%= link_to 'Edit', edit_beer_club_path(@beer_club) %> |
+<%= link_to 'Edit |', edit_beer_club_path(@beer_club) if current_user%>
 <%= link_to 'Back', beer_clubs_path %>
 
 
