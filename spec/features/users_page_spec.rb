@@ -4,7 +4,8 @@ include Helpers
 
 describe "User" do
   let!(:brewery) { FactoryBot.create :brewery, name:"Koff" }
-  let!(:beer1) { FactoryBot.create :beer, name:"iso 3", style:"Weizen", brewery:brewery }
+  let!(:style) { FactoryBot.create :style, name: "Weizen" }
+  let!(:beer1) { FactoryBot.create :beer, name:"iso 3", style: style, brewery:brewery }
   let!(:beer2) { FactoryBot.create :beer, name:"Karhu", brewery:brewery }
   let!(:user) { FactoryBot.create :user }
   let!(:user2) { FactoryBot.create :user, username: "Pekka2" }

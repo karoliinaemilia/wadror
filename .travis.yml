@@ -4,6 +4,8 @@ rvm:
 script:
 - bundle exec rails db:migrate
 - bundle exec rspec -fd spec
+env:
+- BEERMAPPING_APIKEY=62ff689eb83b1c224592db363bfb6793
 deploy:
   provider: heroku
   api_key:

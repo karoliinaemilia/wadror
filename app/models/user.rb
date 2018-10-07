@@ -21,7 +21,7 @@ class User < ApplicationRecord
   def favorite_style
     return nil if ratings.empty?
 
-    get_favorite(ratings.group_by{ |rating| rating.beer.style })
+    get_favorite(ratings.group_by{ |rating| rating.beer.style.name })
   end
 
   def get_favorite(group)
