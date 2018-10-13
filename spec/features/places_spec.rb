@@ -6,13 +6,11 @@ describe "Places" do
       [ Place.new( name:"Oljenkorsi", id: 1 ) ]
     )
 
-    stub_request(:get, "https://api.apixu.com/v1/current.json?key=[secure]&q=kumpula").
-         with(
-           headers: {
-       	  'Accept'=>'*/*',
-       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       	  'User-Agent'=>'Ruby'
-           }).to_return(status: 200, body: "", headers: {})
+    canned_answer = <<-END_OF_STRING
+    {"location":{"name":"Kumpula","region":"Lapland","country":"Finland","lat":66.67,"lon":27.58,"tz_id":"Europe/Helsinki","localtime_epoch":1539462827,"localtime":"2018-10-13 23:33"},"current":{"last_updated_epoch":1539462611,"last_updated":"2018-10-13 23:30","temp_c":10.0,"temp_f":50.0,"is_day":0,"condition":{"text":"Mist","icon":"//cdn.apixu.com/weather/64x64/night/143.png","code":1030},"wind_mph":6.9,"wind_kph":11.2,"wind_degree":190,"wind_dir":"S","pressure_mb":1009.0,"pressure_in":30.3,"precip_mm":0.0,"precip_in":0.0,"humidity":100,"cloud":75,"feelslike_c":8.4,"feelslike_f":47.2,"vis_km":2.3,"vis_miles":1.0}}
+    END_OF_STRING
+
+    stub_request(:get, /.*kumpula/).to_return(body: canned_answer, headers: { 'Content-Type' => "text/json" })
 
     visit places_path
     fill_in('city', with: 'kumpula')
@@ -30,13 +28,11 @@ describe "Places" do
           Place.new( name: breweries[3], id: 4 ) ]
     )
 
-    stub_request(:get, "https://api.apixu.com/v1/current.json?key=[secure]&q=kumpula").
-         with(
-           headers: {
-       	  'Accept'=>'*/*',
-       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       	  'User-Agent'=>'Ruby'
-           }).to_return(status: 200, body: "", headers: {})
+    canned_answer = <<-END_OF_STRING
+    {"location":{"name":"Kumpula","region":"Lapland","country":"Finland","lat":66.67,"lon":27.58,"tz_id":"Europe/Helsinki","localtime_epoch":1539462827,"localtime":"2018-10-13 23:33"},"current":{"last_updated_epoch":1539462611,"last_updated":"2018-10-13 23:30","temp_c":10.0,"temp_f":50.0,"is_day":0,"condition":{"text":"Mist","icon":"//cdn.apixu.com/weather/64x64/night/143.png","code":1030},"wind_mph":6.9,"wind_kph":11.2,"wind_degree":190,"wind_dir":"S","pressure_mb":1009.0,"pressure_in":30.3,"precip_mm":0.0,"precip_in":0.0,"humidity":100,"cloud":75,"feelslike_c":8.4,"feelslike_f":47.2,"vis_km":2.3,"vis_miles":1.0}}
+    END_OF_STRING
+
+    stub_request(:get, /.*kumpula/).to_return(body: canned_answer, headers: { 'Content-Type' => "text/json" })
 
     visit places_path
     fill_in('city', with: 'kumpula')

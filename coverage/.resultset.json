@@ -158,7 +158,7 @@
         1,
         null,
         1,
-        180,
+        184,
         null,
         111,
         null,
@@ -481,7 +481,7 @@
       "/home/local/kckoivu/Ruby/ratebeer/app/models/place.rb": [
         1,
         1,
-        0,
+        7,
         null,
         null
       ],
@@ -500,8 +500,8 @@
         1,
         null,
         2,
-        0,
-        0,
+        2,
+        2,
         null,
         null,
         null
@@ -510,14 +510,14 @@
         1,
         1,
         2,
-        0,
-        0,
+        2,
+        2,
         null,
         null,
         1,
         2,
         null,
-        0,
+        2,
         null,
         null
       ],
@@ -810,6 +810,6 @@
         0
       ]
     },
-    "timestamp": 1539458300
+    "timestamp": 1539462982
   }
 }
