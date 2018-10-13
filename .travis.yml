@@ -4,8 +4,6 @@ rvm:
 script:
 - bundle exec rails db:migrate
 - bundle exec rspec -fd spec
-env:
-- BEERMAPPING_APIKEY=62ff689eb83b1c224592db363bfb6793
 deploy:
   provider: heroku
   api_key:
@@ -13,4 +11,6 @@ deploy:
   app: ratebeerwadror
   on:
     repo: karoliinaemilia/wadror
-  run: "rails db:migrate"
+  run: rails db:migrate
+env:
+  secure: yJ56i6Bv0N5uDQKtF+COFsrROSSVSLoH3p2eT5Z9w00LZ8iAL0IAzQZVqAwp1z8Jo1V4TqZjre4lOAiV3qCB01gCG9P5IR+08KTpnlzPeWY96lDiM4TK3kOJrL2juzerE54CCJSbcQ+TWDLh9CYw4o8rJlcSn1RUgiwrhKjzpFQx7hwTm2/XfUlcfYEJUmDk7vJBD2AnbHau+FB9aA4PAIqdPB+FnToJahgTwoPOO2CswwlulxM0E2NdaWocLJ97G+gdwMI3+6MFCTRFEUnv/8F1EvIOo8PAD0bsJVpYVKJj+4XSSzjbtXeyyEGr/FaWvWwcgvPKcHVIzvgF1Qx+t4UvMhcA4rKFI0iU4Y0V+evqou2Y4EBT9ukByCnBtqqkx+O5ty7ZgfIpiU4lDGHthiXEhdvc1SS26WtooJR+ZFGYzqpl+E2thzeQ6YdpsFFzO3ZphdvZgKaW+ZxJ5d5sFW6rXA3k5G61zoRRBWtcEjFgw/LrrCaxN7kuL7Gh3gJn6XDijcOtz75B4zDEDomExy3Ns9OeZ3z9BD3dajtG3FKFvWNhkwLiJchr90mvqmqLkaxSnyeDw2PDrRKCXFE0U8Y1d1ESPARido+C3RUPGGCTcq2KRLvwgjEYgrqyye454yA75FjkfwwwzTVk8UYAWJf6VbB+GOacSgjtqvjZ1yo=

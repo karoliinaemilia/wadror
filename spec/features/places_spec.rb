@@ -32,7 +32,9 @@ describe "Places" do
   end
 
   it "if none are returned by API, notice is shown" do
-    allow(BeermappingApi).to receive(:places_in).with("kumpula")
+    allow(BeermappingApi).to receive(:places_in).with("kumpula").and_return(
+      []
+    )
 
     city = 'kumpula'
     visit places_path
