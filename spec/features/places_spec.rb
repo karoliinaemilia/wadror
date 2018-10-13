@@ -6,6 +6,15 @@ describe "Places" do
       [ Place.new( name:"Oljenkorsi", id: 1 ) ]
     )
 
+    stub_request(:get, "https://api.apixu.com/v1/current.json?key=[secure]&q=kumpula").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'User-Agent'=>'Ruby'
+           }).
+         to_return(status: 200, body: "", headers: {})
+
     visit places_path
     fill_in('city', with: 'kumpula')
     click_button "Search"
@@ -21,6 +30,15 @@ describe "Places" do
           Place.new( name: breweries[2], id: 3 ),
           Place.new( name: breweries[3], id: 4 ) ]
     )
+
+    stub_request(:get, "https://api.apixu.com/v1/current.json?key=[secure]&q=kumpula").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'User-Agent'=>'Ruby'
+           }).
+         to_return(status: 200, body: "", headers: {})
 
     visit places_path
     fill_in('city', with: 'kumpula')
