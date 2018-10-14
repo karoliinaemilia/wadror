@@ -25,14 +25,13 @@ describe "Rating" do
 
     expect(user.ratings.count).to eq(3)
     expect(beer1.ratings.count).to eq(1)
-    expect(beer1.average_rating).to eq("15")
+    expect(beer1.average_rating).to eq(15.0)
   end
 
-  it "page has all ratings and their amount listed" do
+  it "page has recent ratings listed" do
     visit ratings_path
     
-    expect(page).to have_content "Number of ratings: 2"
-    expect(page).to have_content "#{beer2.name} 10 #{user.username}"
-    expect(page).to have_content "#{beer2.name} 40 #{user.username}"
+    expect(page).to have_content "#{beer2.name} 10 by #{user.username}"
+    expect(page).to have_content "#{beer2.name} 40 by #{user.username}"
   end
 end

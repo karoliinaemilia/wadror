@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
       FactoryBot.create(:rating, score: 20, user: user)
 
       expect(user.ratings.count).to eq(2)
-      expect(user.average_rating).to eq("15")
+      expect(user.average_rating).to eq(15.0)
     end
   end
 
