@@ -42,4 +42,8 @@ class User < ApplicationRecord
     brewerynid = get_favorite(ratings.group_by{ |rating| rating.beer.brewery.id })
     Brewery.find_by id: brewerynid
   end
+
+  def self.top(length)
+    User.all.sort_by{ |b| -(b.ratings.count || 0) }.first(length)
+  end
 end

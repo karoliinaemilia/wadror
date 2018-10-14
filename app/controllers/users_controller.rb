@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_admin, only: :toggle_activity
 
   # GET /users
   # GET /users.json
@@ -68,6 +69,15 @@ class UsersController < ApplicationController
     else
       redirect_to @user
     end
+  end
+
+  def toggle_activity
+    user = User.find(params[:id])
+    user.update_attribute :closed, !user.closed
+
+    new_status = user.closed? ? "closed" : "opened"
+
+    redirect_to user, notice: "account of #{user.username} #{new_status}"
   end
 
   private

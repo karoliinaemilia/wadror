@@ -1,7 +1,9 @@
 <h1><%= @style.name %></h1>
 
-<p><%= @style.description%></p>
+<quote><%= @style.description%></quote>
 
+<br/>
+<br/>
 
 <%if @style.beers.empty?%>
   <p>this style doesn't have any beers yet</p>
@@ -14,7 +16,4 @@
   </ul>
 <%end%>
 
-<% if current_user %>
-  <%= link_to 'Edit', edit_style_path(@style) %> |
-  <%= link_to 'Destroy', @style, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<%= edit_and_destroy_buttons(@style) %>

@@ -4,7 +4,7 @@ class ApixuApi
     response = HTTParty.get url
     response.parsed_response['current']
   end
-  
+
   def self.key
     raise "APIXU_APIKEY env variable not defined" if ENV['APIXU_APIKEY'].nil?
 
