@@ -7,6 +7,7 @@ class RatingsController < ApplicationController
       @top_beers = Beer.top 3
       @top_styles = Style.top 4
     else
+      TestJob.perform_async
       @recent_ratings = Rails.cache.read("rating recent")
       @top_breweries = Rails.cache.read("brewery top 3")
       @top_users = Rails.cache.read("user top 3")

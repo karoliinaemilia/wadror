@@ -9,6 +9,5 @@ class TestJob
     Rails.cache.write("style top 3", Style.top(3))
     Rails.cache.write("rating recent", Rating.recent)
 
-    TestJob.perform_in(10.minutes)
   end
 end
