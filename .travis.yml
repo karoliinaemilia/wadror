@@ -2,8 +2,10 @@ language: ruby
 rvm:
 - 2.5.1
 script:
+- phantomjs testrunner.js
 - bundle exec rails db:migrate
 - bundle exec rspec -fd spec
+- TestJob.perform_in(30.seconds)
 deploy:
   provider: heroku
   api_key:

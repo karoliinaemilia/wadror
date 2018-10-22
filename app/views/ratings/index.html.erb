@@ -35,12 +35,15 @@
 </table>
 
 
+
+
 <h4>Recent ratings</h4>
 <ul class="list-group list-group-flush">
   <% @recent_ratings.each do |rating| %>
     <li class="list-group-item"> <%= rating %> by <%= link_to rating.user.username, user_path(rating.user)%> at <%= rating.created_at %> </li>
   <% end %>
 </ul>
+
 <br/>
 
 <%if current_user%>

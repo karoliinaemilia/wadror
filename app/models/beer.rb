@@ -1,6 +1,6 @@
 class Beer < ApplicationRecord
   include RatingAverage
-  belongs_to :brewery
+  belongs_to :brewery, touch: true
   belongs_to :style
 
   validates :name, presence: true

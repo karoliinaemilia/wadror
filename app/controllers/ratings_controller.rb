@@ -1,11 +1,18 @@
 class RatingsController < ApplicationController
   def index
-    @ratings = Rating.all
-    @recent_ratings = Rating.recent
-    @top_breweries = Brewery.top 3
-    @top_users = User.top 3
-    @top_beers = Beer.top 3
-    @top_styles = Style.top 3
+    if Rails.cache.read("rating recent").nil? 
+      @recent_ratings = Rating.recent
+      @top_breweries = Brewery.top 3
+      @top_users = User.top 3
+      @top_beers = Beer.top 3
+      @top_styles = Style.top 4
+    else
+      @recent_ratings = Rails.cache.read("rating recent")
+      @top_breweries = Rails.cache.read("brewery top 3")
+      @top_users = Rails.cache.read("user top 3")
+      @top_beers = Rails.cache.read("beer top 3")
+      @top_styles = Rails.cache.read("style top 3")
+    end
   end
 
   def new
@@ -20,7 +27,7 @@ class RatingsController < ApplicationController
     if current_user.nil?
       redirect_to signin_path, notice: 'you should be signed in'
     elsif @rating.save
-      redirect_to user_path current_user
+      redirect_to @rating.beer
     else
       @beers = Beer.all
       render :new
